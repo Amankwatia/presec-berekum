@@ -10,7 +10,7 @@ export default defineConfig({
       '@': resolve(__dirname, 'src')
     }
   },
-  base: '/presec/',
+  base: '/presec-berekum/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets'
