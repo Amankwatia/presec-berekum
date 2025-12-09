@@ -4,8 +4,8 @@
       <div class="flex items-center justify-between">
         <!-- Logo and School Name -->
         <div class="flex items-center space-x-3">
-          <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-            <span class="text-navy font-bold text-xl">P</span>
+          <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
+            <img :src="logo" alt="PRESEC Berekum crest" class="w-12 h-12 object-contain" />
           </div>
           <div>
             <h1 class="text-xl font-bold">PRESEC, Berekum</h1>
@@ -59,6 +59,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import logo from '@/assets/presec-logo.svg'
 
 const mobileMenuOpen = ref(false)
 
