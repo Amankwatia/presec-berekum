@@ -1,48 +1,93 @@
 <template>
-  <section class="relative h-screen flex items-center justify-center overflow-hidden">
-    <!-- Background Image with Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-br from-navy via-navy to-blue-900">
-      <div class="absolute inset-0 bg-black opacity-40"></div>
-      <!-- Placeholder for background image -->
-      <div class="absolute inset-0 flex items-center justify-center opacity-10">
-        <svg class="w-96 h-96" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
-        </svg>
+  <section
+    class="relative h-screen flex items-center justify-center overflow-hidden"
+    @mouseenter="stopAutoSlide"
+    @mouseleave="startAutoSlide"
+  >
+    <!-- Slide Background -->
+    <transition name="hero-fade" mode="out-in">
+      <div :key="activeSlide.id" class="absolute inset-0">
+        <img :src="activeSlide.image" :alt="activeSlide.alt" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-br from-navy/90 via-navy/85 to-black/75"></div>
       </div>
-    </div>
+    </transition>
+
+    <!-- Navigation Arrows -->
+    <button
+      type="button"
+      class="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 backdrop-blur-sm transition"
+      @click="prevSlide"
+      aria-label="Previous slide"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button
+      type="button"
+      class="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 backdrop-blur-sm transition"
+      @click="nextSlide"
+      aria-label="Next slide"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
 
     <!-- Hero Content -->
-    <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto" data-aos="fade-up">
-      <h1 class="text-5xl md:text-7xl font-bold mb-4">
-        PRESEC, Berekum
-      </h1>
-      <p class="text-xl md:text-2xl mb-2 italic text-gray-200">
-        "{{ motto }}"
-      </p>
-      <p class="text-lg md:text-xl mb-8 text-gray-300 max-w-2xl mx-auto">
-        {{ tagline }}
-      </p>
-      
-      <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <router-link 
-          to="/about"
-          class="bg-muted-red hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
-        >
-          Learn More
-        </router-link>
-        <router-link 
-          to="/admissions"
-          class="bg-white text-navy hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
-        >
-          Apply Now
-        </router-link>
+    <div class="relative z-10 text-center text-white px-6 max-w-4xl mx-auto" data-aos="fade-up">
+      <transition name="hero-fade" mode="out-in">
+        <div :key="activeSlide.id" class="space-y-6">
+          <div v-if="activeSlide.badge" class="inline-flex items-center gap-2 bg-white/15 px-4 py-2 rounded-full text-sm tracking-wide uppercase">
+            <span class="h-2 w-2 rounded-full bg-muted-red"></span>
+            {{ activeSlide.badge }}
+          </div>
+          <h1 class="text-4xl md:text-7xl font-bold leading-tight">
+            {{ activeSlide.title }}
+          </h1>
+          <p v-if="activeSlide.subtitle" class="text-lg md:text-2xl italic text-gray-200">
+            "{{ activeSlide.subtitle }}"
+          </p>
+          <p class="text-base md:text-xl text-gray-200 max-w-2xl mx-auto">
+            {{ activeSlide.description }}
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+            <router-link
+              v-if="activeSlide.primaryCta"
+              :to="activeSlide.primaryCta.to"
+              class="bg-muted-red hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+            >
+              {{ activeSlide.primaryCta.label }}
+            </router-link>
+            <router-link
+              v-if="activeSlide.secondaryCta"
+              :to="activeSlide.secondaryCta.to"
+              class="bg-white text-navy hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+            >
+              {{ activeSlide.secondaryCta.label }}
+            </router-link>
+          </div>
+        </div>
+      </transition>
+
+      <!-- Slide Indicators -->
+      <div class="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-3">
+        <button
+          v-for="(slide, index) in slides"
+          :key="slide.id"
+          type="button"
+          class="w-3 h-3 rounded-full transition"
+          :class="currentSlide === index ? 'bg-white' : 'bg-white/40 hover:bg-white/70'"
+          @click="goToSlide(index)"
+          :aria-label="`Go to slide ${index + 1}`"
+        ></button>
       </div>
 
       <!-- Scroll Indicator -->
-      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </div>
     </div>
@@ -50,7 +95,9 @@
 </template>
 
 <script setup>
-defineProps({
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+
+const props = defineProps({
   motto: {
     type: String,
     default: 'Determination and Perseverance'
@@ -60,9 +107,111 @@ defineProps({
     default: 'Shaping minds for a brighter tomorrow'
   }
 })
+
+const slides = [
+  {
+    id: 1,
+    title: 'PRESEC, Berekum',
+    subtitle: props.motto,
+    description: props.tagline,
+    image: 'https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1600&q=80',
+    alt: 'Students walking on a modern high school campus',
+    badge: 'Academic Excellence',
+    primaryCta: { label: 'Discover Our Story', to: '/about' },
+    secondaryCta: { label: 'Apply Now', to: '/admissions' }
+  },
+  {
+    id: 2,
+    title: 'Inspiring STEM Innovation',
+    subtitle: 'Hands-on learning for tomorrow\'s leaders',
+    description: 'World-class laboratories, robotics clubs, and mentorship programs empower students to explore science and technology with curiosity and confidence.',
+    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=80',
+    alt: 'Students collaborating with educational technology in a lab',
+    badge: 'STEM Leadership',
+    primaryCta: { label: 'Explore Academics', to: '/academics' },
+    secondaryCta: { label: 'View Facilities', to: '/gallery' }
+  },
+  {
+    id: 3,
+    title: 'Holistic Student Development',
+    subtitle: 'Discipline, integrity, and service',
+    description: 'Our vibrant co-curricular activities—from debate and sports to music and community outreach—build character and lifelong friendships.',
+    image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80',
+    alt: 'Students engaged in a spirited sports activity on campus',
+    badge: 'Beyond the Classroom',
+    primaryCta: { label: 'See Student Life', to: '/news' },
+    secondaryCta: { label: 'Join a Club', to: '/contact' }
+  },
+  {
+    id: 4,
+    title: 'Global Alumni Network',
+    subtitle: 'Leaders grounded in faith and excellence',
+    description: 'Our accomplished alumni mentor current students and create opportunities across Ghana and the global community.',
+    image: 'https://images.unsplash.com/photo-1460518451285-97b6aa326961?auto=format&fit=crop&w=1600&q=80',
+    alt: 'Graduates celebrating together outdoors',
+    badge: 'Legacy of Impact',
+    primaryCta: { label: 'Meet Our Alumni', to: '/about' },
+    secondaryCta: { label: 'Support PRESEC', to: '/contact' }
+  }
+]
+
+const currentSlide = ref(0)
+const intervalId = ref(null)
+const slideCount = slides.length
+
+const activeSlide = computed(() => slides[currentSlide.value])
+
+const goToSlide = (index) => {
+  currentSlide.value = (index + slideCount) % slideCount
+  restartAutoSlide()
+}
+
+const nextSlide = () => {
+  goToSlide(currentSlide.value + 1)
+}
+
+const prevSlide = () => {
+  goToSlide(currentSlide.value - 1)
+}
+
+const stopAutoSlide = () => {
+  if (intervalId.value) {
+    clearInterval(intervalId.value)
+    intervalId.value = null
+  }
+}
+
+const startAutoSlide = () => {
+  if (!intervalId.value) {
+    intervalId.value = window.setInterval(nextSlide, 7000)
+  }
+}
+
+const restartAutoSlide = () => {
+  stopAutoSlide()
+  startAutoSlide()
+}
+
+onMounted(() => {
+  startAutoSlide()
+})
+
+onBeforeUnmount(() => {
+  stopAutoSlide()
+})
 </script>
 
 <style scoped>
+.hero-fade-enter-active,
+.hero-fade-leave-active {
+  transition: opacity 0.8s ease;
+}
+
+.hero-fade-enter-from,
+.hero-fade-leave-to {
+  opacity: 0;
+}
+
 @keyframes bounce {
   0%, 100% {
     transform: translateY(0) translateX(-50%);
