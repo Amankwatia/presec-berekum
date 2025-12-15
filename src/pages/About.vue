@@ -130,19 +130,24 @@
 <script setup>
 const leadership = [
   {
-    name: 'Mr. Samuel Owusu',
-    position: 'Headmaster',
+    name: 'Mrs. Rebecca Appiah-Mensah',
+    position: 'Headmistress',
     description: 'Leading with vision and dedication to academic excellence and student development.'
   },
   {
-    name: 'Mrs. Grace Mensah',
-    position: 'Assistant Headmistress (Academic)',
+    name: 'Mr Awuku Alexander',
+    position: 'Assistant Headmaster (Academic)',
     description: 'Overseeing curriculum development and maintaining high academic standards.'
   },
   {
-    name: 'Mr. Kwame Boateng',
+    name: 'Mr. Dennis Opoku Mensah',
     position: 'Assistant Headmaster (Administration)',
     description: 'Managing school operations and ensuring smooth administrative processes.'
+  },
+  {
+    name: 'Rev Asiamah Ernest',
+    position: 'Assistant Headmaster (Domestic)',
+    description: 'Fostering a disciplined and respectful school environment for all students.'
   }
 ]
 </script>

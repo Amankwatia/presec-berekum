@@ -50,6 +50,93 @@
       </div>
     </section>
 
+    <!-- Programmes Section -->
+    <section class="py-16 bg-white" data-aos="fade-up">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center mb-12">
+          <h2 class="text-4xl font-bold text-navy">Learning Areas</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div
+            v-for="programme in programmes"
+            :key="programme.name"
+            class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-lg transition duration-300"
+            data-aos="fade-up"
+            :data-aos-delay="programme.delay"
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-full bg-navy/10 text-navy flex items-center justify-center text-xl">
+                {{ programme.icon }}
+              </div>
+              <h3 class="text-lg font-semibold text-navy">{{ programme.name }}</h3>
+            </div>
+            <p class="text-sm text-gray-600 mb-4">{{ programme.summary }}</p>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li
+                v-for="focus in programme.focus"
+                :key="focus"
+                class="flex items-center gap-2"
+              >
+                <span class="inline-flex h-1.5 w-1.5 rounded-full bg-muted-red"></span>
+                {{ focus }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Gallery Section -->
+    <section class="py-16 bg-gray-50" data-aos="fade-up">
+      <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto text-center mb-12">
+          <span class="inline-block uppercase tracking-widest text-sm text-muted-red font-semibold mb-3">
+            Campus Life
+          </span>
+          <h2 class="text-4xl font-bold text-navy mb-4">Highlights from Our Gallery</h2>
+          <p class="text-gray-600">
+            A glimpse into the vibrant academic, cultural, and co-curricular life that defines the PRESEC experience.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div
+            v-for="(item, index) in featuredGallery"
+            :key="item.title"
+            class="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300"
+            :data-aos="index % 2 === 0 ? 'fade-right' : 'fade-left'"
+            :data-aos-delay="index * 100"
+          >
+            <div class="aspect-w-4 aspect-h-3">
+              <img :src="item.image" :alt="item.title" class="object-cover w-full h-full group-hover:scale-105 transition duration-500" />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent opacity-80 group-hover:opacity-100 transition duration-300"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-left text-white">
+              <span class="inline-flex items-center gap-2 text-xs uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full mb-3">
+                <span class="h-1 w-1 rounded-full bg-muted-red"></span>
+                {{ item.category }}
+              </span>
+              <h3 class="text-xl font-semibold mb-2">{{ item.title }}</h3>
+              <p class="text-sm text-gray-200">{{ item.description }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-10">
+          <router-link
+            to="/gallery"
+            class="inline-flex items-center gap-2 text-navy font-semibold hover:text-muted-red transition"
+          >
+            View Full Gallery
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </router-link>
+        </div>
+      </div>
+    </section>
+
     <!-- Announcements Section -->
     <section class="py-16 bg-white" data-aos="fade-up">
       <div class="container mx-auto px-4">
@@ -125,6 +212,72 @@ const facilities = [
     name: 'Sports Complex',
     description: 'Extensive facilities for athletics, football, basketball, and other sports.',
     icon: 'M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3z'
+  }
+]
+
+const programmes = [
+  {
+    name: 'General Science',
+    summary: 'Chemistry, physics, biology, computing and elective mathematics with hands-on laboratory work.',
+    focus: ['STEM research projects', 'University-ready foundation'],
+    icon: '🔬',
+    delay: 0
+  },
+  {
+    name: 'General Business',
+    summary: 'Accounting, economics, and business management for future entrepreneurs and analysts.',
+    focus: ['Financial literacy', 'Enterprise development'],
+    icon: '💼',
+    delay: 100
+  },
+  {
+    name: 'General Arts',
+    summary: 'Humanities-driven programme in languages, literature and social sciences.',
+    focus: ['Critical thinking', 'Communication mastery'],
+    icon: '📚',
+    delay: 200
+  },
+  {
+    name: 'Visual Arts',
+    summary: 'Creative disciplines including ICT, design foundation & studio art projects.',
+    focus: ['Design portfolio building', 'Creative industry exposure'],
+    icon: '🎨',
+    delay: 300
+  },
+  {
+    name: 'Home Economics',
+    summary: 'Nutrition, management with practical projects.',
+    focus: ['Hospitality basics', 'Entrepreneurial thinking'],
+    icon: '🍽️',
+    delay: 400
+  },
+  {
+    name: 'Agricultural Science',
+    summary: 'Agriculture, Agric Science, Chemisry.',
+    focus: ['Field-based learning', 'Agri-innovation skills'],
+    icon: '🌱',
+    delay: 500
+  }
+]
+
+const featuredGallery = [
+  {
+    title: 'STEM Innovation Lab',
+    category: 'Academics',
+    description: 'Students showcasing robotics and coding projects during the annual STEM showcase.',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    title: 'Cultural Day Celebrations',
+    category: 'Culture',
+    description: 'A vibrant display of Ghanaian heritage, music, and dance from across the regions.',
+    image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    title: 'Inter-School Sports Finals',
+    category: 'Sports',
+    description: 'Our athletics team representing PRESEC with pride and sportsmanship at the national finals.',
+    image: 'https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=80'
   }
 ]
 

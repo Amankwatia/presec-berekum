@@ -8,7 +8,7 @@
     <transition name="hero-fade" mode="out-in">
       <div :key="activeSlide.id" class="absolute inset-0 bg-navy">
         <img :src="activeSlide.image" :alt="activeSlide.alt" class="w-full h-full object-cover object-center" />
-        <div class="absolute inset-0 bg-gradient-to-br from-navy/80 via-navy/60 to-black/55"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-navy/60 via-navy/35 to-black/25"></div>
       </div>
     </transition>
 
@@ -183,7 +183,7 @@ const stopAutoSlide = () => {
 
 const startAutoSlide = () => {
   if (!intervalId.value) {
-    intervalId.value = window.setInterval(nextSlide, 7000)
+    intervalId.value = window.setInterval(nextSlide, 3000)
   }
 }
 
