@@ -73,7 +73,7 @@
 
       <!-- Copyright -->
       <div class="border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
-        <p>&copy; {{ currentYear }} PRESEC, Berekum. All rights reserved. | Powered by Bright Amanwatia</p>
+        <p>&copy; {{ currentYear }} PRESEC, Berekum | All rights reserved | Powered by Bright Amankwatia</p>
       </div>
     </div>
   </footer>

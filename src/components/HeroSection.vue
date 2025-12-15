@@ -56,14 +56,14 @@
             <router-link
               v-if="activeSlide.primaryCta"
               :to="activeSlide.primaryCta.to"
-              class="bg-muted-red hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+              class="btn-primary px-8"
             >
               {{ activeSlide.primaryCta.label }}
             </router-link>
             <router-link
               v-if="activeSlide.secondaryCta"
               :to="activeSlide.secondaryCta.to"
-              class="bg-white text-navy hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+              class="btn-secondary px-8"
             >
               {{ activeSlide.secondaryCta.label }}
             </router-link>

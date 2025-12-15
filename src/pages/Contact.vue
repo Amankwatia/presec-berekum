@@ -170,7 +170,7 @@
 
               <button
                 type="submit"
-                class="w-full bg-muted-red hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                class="btn-primary w-full"
               >
                 Send Message
               </button>

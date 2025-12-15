@@ -129,7 +129,7 @@
           <p class="text-lg mb-6 text-gray-200">
             Get detailed information about our programs, facilities, and admission procedures.
           </p>
-          <button class="bg-muted-red hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+          <button class="btn-primary">
             Download Prospectus (PDF)
           </button>
         </div>
@@ -145,7 +145,7 @@
           Take the first step towards a bright future today.
         </p>
         <button 
-          class="bg-navy hover:bg-blue-900 text-white px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+          class="btn-primary px-10 py-4 text-lg"
           data-aos="zoom-in"
         >
           Apply Now

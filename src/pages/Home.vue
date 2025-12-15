@@ -16,7 +16,7 @@
           </p>
           <router-link 
             to="/about"
-            class="inline-block bg-muted-red hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+            class="btn-primary"
           >
             Discover Our Story
           </router-link>
@@ -57,32 +57,37 @@
           <h2 class="text-4xl font-bold text-navy">Learning Areas</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <div
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <article
             v-for="programme in programmes"
             :key="programme.name"
-            class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-lg transition duration-300"
+            class="rounded-2xl border border-navy/10 bg-white/90 backdrop-blur-sm p-6 md:p-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
             data-aos="fade-up"
             :data-aos-delay="programme.delay"
           >
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-full bg-navy/10 text-navy flex items-center justify-center text-xl">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-muted-red/10 text-2xl">
                 {{ programme.icon }}
               </div>
-              <h3 class="text-lg font-semibold text-navy">{{ programme.name }}</h3>
+              <div>
+                <p class="text-xs uppercase tracking-widest text-navy/60">Programme</p>
+                <h3 class="text-xl font-semibold text-navy">{{ programme.name }}</h3>
+              </div>
             </div>
-            <p class="text-sm text-gray-600 mb-4">{{ programme.summary }}</p>
-            <ul class="space-y-2 text-sm text-gray-600">
-              <li
+            <p class="text-sm text-gray-600 leading-relaxed mb-6">
+              {{ programme.summary }}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span
                 v-for="focus in programme.focus"
                 :key="focus"
-                class="flex items-center gap-2"
+                class="inline-flex items-center gap-2 rounded-full border border-navy/10 bg-navy/5 px-3 py-1 text-xs font-semibold text-navy/80"
               >
                 <span class="inline-flex h-1.5 w-1.5 rounded-full bg-muted-red"></span>
                 {{ focus }}
-              </li>
-            </ul>
-          </div>
+              </span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -100,7 +105,7 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div
             v-for="(item, index) in featuredGallery"
             :key="item.title"
@@ -180,7 +185,7 @@
         </p>
         <router-link 
           to="/admissions"
-          class="inline-block bg-muted-red hover:bg-red-700 text-white px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+          class="btn-primary px-10 py-4 text-lg"
         >
           Apply Today
         </router-link>
@@ -218,43 +223,43 @@ const facilities = [
 const programmes = [
   {
     name: 'General Science',
-    summary: 'Chemistry, physics, biology, computing and elective mathematics with hands-on laboratory work.',
-    focus: ['STEM research projects', 'University-ready foundation'],
+    summary: 'Integrated physics, chemistry, biology, and computing reinforced through sustained laboratory practice and inquiry-based learning.',
+    focus: ['Research mentorship', 'STEM competition prep'],
     icon: '🔬',
     delay: 0
   },
   {
     name: 'General Business',
-    summary: 'Accounting, economics, and business management for future entrepreneurs and analysts.',
-    focus: ['Financial literacy', 'Enterprise development'],
+    summary: 'Accounting, economics, and business analytics delivered with real-world case studies and entrepreneurial simulations.',
+    focus: ['Financial literacy labs', 'Enterprise incubation'],
     icon: '💼',
     delay: 100
   },
   {
     name: 'General Arts',
-    summary: 'Humanities-driven programme in languages, literature and social sciences.',
-    focus: ['Critical thinking', 'Communication mastery'],
+    summary: 'Humanities pathway covering languages, literature, civics, and the social sciences with an emphasis on global perspectives.',
+    focus: ['Critical inquiry studios', 'Leadership communication'],
     icon: '📚',
     delay: 200
   },
   {
     name: 'Visual Arts',
-    summary: 'Creative disciplines including ICT, design foundation & studio art projects.',
-    focus: ['Design portfolio building', 'Creative industry exposure'],
+    summary: 'Design studio curriculum spanning graphic communication, textiles, sculpture, and digital creativity.',
+    focus: ['Portfolio development', 'Creative industry exposure'],
     icon: '🎨',
     delay: 300
   },
   {
     name: 'Home Economics',
-    summary: 'Nutrition, management with practical projects.',
-    focus: ['Hospitality basics', 'Entrepreneurial thinking'],
+    summary: 'Applied nutrition, textiles, and resource management underpinned by hospitality practice and entrepreneurship.',
+    focus: ['Hospitality lab practice', 'Community wellness projects'],
     icon: '🍽️',
     delay: 400
   },
   {
     name: 'Agricultural Science',
-    summary: 'Agriculture, Agric Science, Chemisry.',
-    focus: ['Field-based learning', 'Agri-innovation skills'],
+    summary: 'Modern crop and animal science blended with agribusiness management and environmental stewardship.',
+    focus: ['Field experimentation', 'Agri-innovation labs'],
     icon: '🌱',
     delay: 500
   }
@@ -278,6 +283,12 @@ const featuredGallery = [
     category: 'Sports',
     description: 'Our athletics team representing PRESEC with pride and sportsmanship at the national finals.',
     image: 'https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    title: 'Leadership & Service Projects',
+    category: 'Community',
+    description: 'Students spearheading outreach initiatives and mentorship programmes within the Berekum community.',
+    image: 'https://images.unsplash.com/photo-1484882918957-e9c7f866b160?auto=format&fit=crop&w=1200&q=80'
   }
 ]
 

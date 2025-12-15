@@ -1,59 +1,59 @@
 <template>
-  <nav class="bg-navy text-white shadow-lg sticky top-0 z-50">
-    <div class="container mx-auto px-4 py-4">
-      <div class="flex items-center justify-between">
-        <!-- Logo and School Name -->
-        <div class="flex items-center space-x-3">
-          <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
-            <img :src="logo" alt="PRESEC Berekum crest" class="w-12 h-12 object-contain" />
-          </div>
-          <div>
-            <h1 class="text-xl font-bold">PRESEC, Berekum</h1>
-            <p class="text-xs text-gray-300 italic">Determination and Perseverance</p>
-          </div>
+  <nav class="sticky top-0 z-50 border-b border-navy/10 bg-white/95 backdrop-blur">
+    <div class="container mx-auto flex items-center justify-between px-4 py-3 text-navy">
+      <!-- Logo and School Name -->
+      <router-link to="/" class="flex items-center gap-3">
+        <div class="flex h-12 w-12 items-center justify-center rounded-full border border-navy/10 bg-white"> 
+          <img :src="logo" alt="PRESEC Berekum crest" class="h-9 w-9 object-contain" />
         </div>
-
-        <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center space-x-6">
-          <router-link 
-            v-for="link in navLinks" 
-            :key="link.path"
-            :to="link.path"
-            class="hover:text-muted-red transition-colors duration-300 font-medium"
-            active-class="text-muted-red"
-          >
-            {{ link.name }}
-          </router-link>
+        <div>
+          <h1 class="text-lg font-semibold tracking-wide">PRESEC, Berekum</h1>
+          <p class="text-xs text-navy/60">Determination & Perseverance</p>
         </div>
+      </router-link>
 
-        <!-- Mobile Menu Button -->
-        <button 
-          @click="toggleMobileMenu"
-          class="md:hidden focus:outline-none"
+      <!-- Desktop Navigation -->
+      <div class="hidden items-center gap-2 md:flex">
+        <router-link
+          v-for="link in navLinks"
+          :key="link.path"
+          :to="link.path"
+          class="rounded-full px-4 py-2 text-sm font-medium text-navy/70 transition-colors duration-200 hover:text-navy"
+          active-class="bg-navy/5 text-navy"
         >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
+          {{ link.name }}
+        </router-link>
       </div>
 
-      <!-- Mobile Navigation -->
-      <transition name="slide">
-        <div v-if="mobileMenuOpen" class="md:hidden mt-4 pb-4">
-          <router-link 
-            v-for="link in navLinks" 
+      <!-- Mobile Menu Button -->
+      <button
+        @click="toggleMobileMenu"
+        class="md:hidden text-navy focus:outline-none"
+      >
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <transition name="slide">
+      <div v-if="mobileMenuOpen" class="border-t border-navy/10 bg-white md:hidden">
+        <div class="container mx-auto px-4 py-3">
+          <router-link
+            v-for="link in navLinks"
             :key="link.path"
             :to="link.path"
             @click="closeMobileMenu"
-            class="block py-2 hover:text-muted-red transition-colors duration-300"
-            active-class="text-muted-red"
+            class="block rounded-full px-4 py-2 text-sm font-medium text-navy/70 transition-colors duration-200 hover:bg-navy/5 hover:text-navy"
+            active-class="bg-navy/5 text-navy"
           >
             {{ link.name }}
           </router-link>
         </div>
-      </transition>
-    </div>
+      </div>
+    </transition>
   </nav>
 </template>
 

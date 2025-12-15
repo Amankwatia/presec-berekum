@@ -9,6 +9,8 @@ export default {
       colors: {
         'navy': '#001F3F',
         'presec-red': '#C0392B',
+        'muted-red': '#7A0019',
+        'muted-red-dark': '#540012',
       },
       fontFamily: {
         'sans': ['Inter', 'Poppins', 'system-ui', 'sans-serif'],
