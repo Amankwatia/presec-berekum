@@ -7,8 +7,8 @@
     <!-- Slide Background -->
     <transition name="hero-fade" mode="out-in">
       <div :key="activeSlide.id" class="absolute inset-0 bg-navy">
-        <img :src="activeSlide.image" :alt="activeSlide.alt" class="w-full h-full object-cover" />
-        <div class="absolute inset-0 bg-gradient-to-br from-navy/90 via-navy/85 to-black/75"></div>
+        <img :src="activeSlide.image" :alt="activeSlide.alt" class="w-full h-full object-cover object-center" />
+        <div class="absolute inset-0 bg-gradient-to-br from-navy/80 via-navy/60 to-black/55"></div>
       </div>
     </transition>
 
@@ -193,6 +193,11 @@ const restartAutoSlide = () => {
 }
 
 onMounted(() => {
+  // Preload slide imagery to avoid flicker when transitioning
+  slides.forEach((slide) => {
+    const img = new Image()
+    img.src = slide.image
+  })
   startAutoSlide()
 })
 
