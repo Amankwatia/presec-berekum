@@ -1,12 +1,12 @@
 <template>
   <section
-    class="relative h-screen flex items-center justify-center overflow-hidden"
+    class="relative h-screen flex items-center justify-center overflow-hidden bg-navy"
     @mouseenter="stopAutoSlide"
     @mouseleave="startAutoSlide"
   >
     <!-- Slide Background -->
     <transition name="hero-fade" mode="out-in">
-      <div :key="activeSlide.id" class="absolute inset-0">
+      <div :key="activeSlide.id" class="absolute inset-0 bg-navy">
         <img :src="activeSlide.image" :alt="activeSlide.alt" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-br from-navy/90 via-navy/85 to-black/75"></div>
       </div>
