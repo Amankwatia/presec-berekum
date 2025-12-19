@@ -8,7 +8,7 @@
         </div>
         <div>
           <h1 class="text-lg font-semibold tracking-wide">PRESEC, Berekum</h1>
-          <p class="text-xs text-navy/60">Determination & Perseverance</p>
+          <p class="text-xs text-navy/60">Development Through Determination</p>
         </div>
       </router-link>
 

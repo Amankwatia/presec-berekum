@@ -97,6 +97,11 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 
+import heroCampus from '@/assets/hero/gathering.jpg'
+import heroStem from '@/assets/hero/aboy2.jpg'
+import heroLife from '@/assets/hero/setho4.jpg'
+import heroAlumni from '@/assets/hero/gath3.jpg'
+
 const props = defineProps({
   motto: {
     type: String,
@@ -114,8 +119,8 @@ const slides = [
     title: 'PRESEC, Berekum',
     subtitle: props.motto,
     description: props.tagline,
-    image: 'https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1600&q=80',
-    alt: 'Students walking on a modern high school campus',
+    image: heroCampus,
+    alt: 'Abstract illustration inspired by PRESEC Berekum campus',
     badge: 'Academic Excellence',
     primaryCta: { label: 'Discover Our Story', to: '/about' },
     secondaryCta: { label: 'Apply Now', to: '/admissions' }
@@ -125,8 +130,8 @@ const slides = [
     title: 'Inspiring STEM Innovation',
     subtitle: 'Hands-on learning for tomorrow\'s leaders',
     description: 'World-class laboratories, robotics clubs, and mentorship programs empower students to explore science and technology with curiosity and confidence.',
-    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=80',
-    alt: 'Students collaborating with educational technology in a lab',
+    image: heroStem,
+    alt: 'Abstract illustration inspired by STEM innovation at PRESEC',
     badge: 'STEM Leadership',
     primaryCta: { label: 'Explore Academics', to: '/academics' },
     secondaryCta: { label: 'View Facilities', to: '/gallery' }
@@ -136,8 +141,8 @@ const slides = [
     title: 'Holistic Student Development',
     subtitle: 'Discipline, integrity, and service',
     description: 'Our vibrant co-curricular activities—from debate and sports to music and community outreach—build character and lifelong friendships.',
-    image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80',
-    alt: 'Students engaged in a spirited sports activity on campus',
+    image: heroLife,
+    alt: 'Abstract illustration representing holistic student life',
     badge: 'Beyond the Classroom',
     primaryCta: { label: 'See Student Life', to: '/news' },
     secondaryCta: { label: 'Join a Club', to: '/contact' }
@@ -147,8 +152,8 @@ const slides = [
     title: 'Global Alumni Network',
     subtitle: 'Leaders grounded in faith and excellence',
     description: 'Our accomplished alumni mentor current students and create opportunities across Ghana and the global community.',
-    image: 'https://images.unsplash.com/photo-1460518451285-97b6aa326961?auto=format&fit=crop&w=1600&q=80',
-    alt: 'Graduates celebrating together outdoors',
+    image: heroAlumni,
+    alt: 'Abstract illustration celebrating the PRESEC alumni network',
     badge: 'Legacy of Impact',
     primaryCta: { label: 'Meet Our Alumni', to: '/about' },
     secondaryCta: { label: 'Support PRESEC', to: '/contact' }

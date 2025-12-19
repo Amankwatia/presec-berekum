@@ -197,6 +197,11 @@
 <script setup>
 import HeroSection from '../components/HeroSection.vue'
 
+import galleryAcademics from '@/assets/gallery/aboy2.jpg'
+import galleryCulture from '@/assets/gallery/setho4.jpg'
+import galleryAwards from '@/assets/gallery/gathering.jpg'
+import galleryStudents from '@/assets/gallery/students.jpg'
+
 const facilities = [
   {
     name: 'Modern Classrooms',
@@ -267,36 +272,36 @@ const programmes = [
 
 const featuredGallery = [
   {
-    title: 'STEM Innovation Lab',
-    category: 'Academics',
-    description: 'Students showcasing robotics and coding projects during the annual STEM showcase.',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80'
-  },
-  {
     title: 'Cultural Day Celebrations',
-    category: 'Culture',
-    description: 'A vibrant display of Ghanaian heritage, music, and dance from across the regions.',
-    image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80'
+    category: 'Events',
+    description: 'Students showcasing Ghanaian heritage through music, dance, and colourful regalia.',
+    image: galleryCulture
   },
   {
-    title: 'Inter-School Sports Finals',
-    category: 'Sports',
-    description: 'Our athletics team representing PRESEC with pride and sportsmanship at the national finals.',
-    image: 'https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=80'
+    title: 'Science Laboratory Innovations',
+    category: 'Campus',
+    description: 'Hands-on laboratory learning that anchors PRESEC’s academic excellence.',
+    image: galleryAcademics
   },
   {
-    title: 'Leadership & Service Projects',
-    category: 'Community',
-    description: 'Students spearheading outreach initiatives and mentorship programmes within the Berekum community.',
-    image: 'https://images.unsplash.com/photo-1484882918957-e9c7f866b160?auto=format&fit=crop&w=1200&q=80'
+    title: 'Classroom Collaboration',
+    category: 'Students',
+    description: 'Learners engaged in collaborative study sessions that build confidence and leadership.',
+    image: galleryStudents
+  },
+  {
+    title: 'Regional Awards Night',
+    category: 'Awards',
+    description: 'Celebrating academic and co-curricular honours achieved by our outstanding students.',
+    image: galleryAwards
   }
 ]
 
 const announcements = [
   {
-    date: 'Nov 10, 2025',
-    title: 'Admissions Open for 2026',
-    description: 'Applications are now being accepted for the 2026 academic year. Don\'t miss this opportunity to join our community.'
+    date: 'Jan 5, 2026',
+    title: 'School Reopens for 2026 Academic Year',
+    description: 'PRESEC, Berekum warmly welcomes Form 3s and 2s back to campus for the start of the 2026 academic year. We look forward to another year of excellence and growth.'
   },
   {
     date: 'Nov 5, 2025',

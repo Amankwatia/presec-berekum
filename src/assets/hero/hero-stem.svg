@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="stem-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#001F3F" />
+      <stop offset="100%" stop-color="#123B5A" />
+    </linearGradient>
+    <radialGradient id="pulse" cx="75%" cy="25%" r="60%">
+      <stop offset="0%" stop-color="#C44536" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#C44536" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#stem-bg)" />
+  <circle cx="1200" cy="260" r="360" fill="url(#pulse)" />
+  <g fill="none" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="2">
+    <path d="M200 220 Q400 120 600 220 T1000 220" />
+    <path d="M200 320 Q400 420 600 320 T1000 320" />
+    <path d="M200 420 Q400 520 600 420 T1000 420" />
+    <path d="M200 520 Q400 620 600 520 T1000 520" />
+  </g>
+  <g fill="#F7F9FC" fill-opacity="0.06">
+    <circle cx="360" cy="560" r="130" />
+    <rect x="780" y="520" width="220" height="180" rx="36" />
+    <polygon points="1200,580 1300,760 1100,760" />
+  </g>
+</svg>

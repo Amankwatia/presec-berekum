@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="gallery-awards-bg" x1="0%" y1="0%" x2="100%" y2="120%">
+      <stop offset="0%" stop-color="#FFF9E6" />
+      <stop offset="100%" stop-color="#FFE8A3" />
+    </linearGradient>
+    <radialGradient id="gallery-awards-glow" cx="40%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#F4D35E" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#F4D35E" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#gallery-awards-bg)" />
+  <circle cx="320" cy="200" r="200" fill="url(#gallery-awards-glow)" />
+  <g fill="#7A0019" fill-opacity="0.15">
+    <polygon points="320,140 360,220 450,240 380,300 400,390 320,340 240,390 260,300 190,240 280,220" />
+    <rect x="300" y="400" width="40" height="120" rx="16" />
+    <rect x="260" y="520" width="120" height="24" rx="12" />
+  </g>
+</svg>

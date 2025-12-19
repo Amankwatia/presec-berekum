@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="gallery-culture-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5E6" />
+      <stop offset="100%" stop-color="#FEE8C8" />
+    </linearGradient>
+    <radialGradient id="gallery-culture-glow" cx="30%" cy="70%" r="65%">
+      <stop offset="0%" stop-color="#C44536" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#C44536" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#gallery-culture-bg)" />
+  <circle cx="280" cy="420" r="220" fill="url(#gallery-culture-glow)" />
+  <g fill="none" stroke="#7A0019" stroke-opacity="0.2" stroke-width="14" stroke-linecap="round">
+    <path d="M140 220 Q240 120 340 220" />
+    <path d="M340 220 Q440 320 540 220" />
+    <path d="M540 220 Q640 120 740 220" />
+  </g>
+  <g fill="#7A0019" fill-opacity="0.12">
+    <circle cx="240" cy="420" r="70" />
+    <circle cx="420" cy="420" r="90" />
+    <circle cx="600" cy="420" r="70" />
+  </g>
+</svg>

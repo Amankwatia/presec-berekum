@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="gallery-sports-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8F1FD" />
+      <stop offset="100%" stop-color="#D7E4F7" />
+    </linearGradient>
+    <radialGradient id="gallery-sports-glow" cx="70%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#F4D35E" stop-opacity="0.24" />
+      <stop offset="100%" stop-color="#F4D35E" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#gallery-sports-bg)" />
+  <circle cx="540" cy="220" r="200" fill="url(#gallery-sports-glow)" />
+  <g fill="none" stroke="#001F3F" stroke-opacity="0.14" stroke-width="12" stroke-linecap="round">
+    <path d="M120 360 Q240 260 360 360" />
+    <path d="M360 360 Q480 460 600 360" />
+    <path d="M600 360 Q720 260 840 360" />
+  </g>
+  <g fill="#001F3F" fill-opacity="0.08">
+    <rect x="220" y="400" width="120" height="140" rx="28" />
+    <rect x="360" y="420" width="140" height="120" rx="28" />
+    <rect x="520" y="400" width="120" height="140" rx="28" />
+  </g>
+</svg>
