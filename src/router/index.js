@@ -5,6 +5,7 @@ import Academics from '../pages/Academics.vue'
 import Admissions from '../pages/Admissions.vue'
 import Gallery from '../pages/Gallery.vue'
 import News from '../pages/News.vue'
+import Alumni from '../pages/Alumni.vue'
 import Contact from '../pages/Contact.vue'
 
 const routes = [
@@ -60,6 +61,15 @@ const routes = [
     meta: {
       title: 'News & Events - PRESEC, Berekum',
       description: 'Stay updated with the latest news and events at PRESEC, Berekum.'
+    }
+  },
+  {
+    path: '/alumni',
+    name: 'Alumni',
+    component: Alumni,
+    meta: {
+      title: 'Alumni - PRESEC, Berekum',
+      description: 'Connect with the PRESEC Berekum alumni community. Register, network, mentor and support the school.'
     }
   },
   {

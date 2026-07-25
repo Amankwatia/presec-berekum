@@ -70,6 +70,7 @@ const navLinks = [
   { name: 'Admissions', path: '/admissions' },
   { name: 'Gallery', path: '/gallery' },
   { name: 'News', path: '/news' },
+  { name: 'Alumni', path: '/alumni' },
   { name: 'Contact', path: '/contact' }
 ]
 
