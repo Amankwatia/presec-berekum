@@ -7,6 +7,7 @@ Use this setup when you want alumni registrations to land in Google Sheets witho
 Create a Google Form with these questions:
 
 - Full Name
+- Gender
 - Year of Completion
 - Programme Studied
 - Current Profession
@@ -50,6 +51,8 @@ entry.123456789=Sample+Name&entry.987654321=2020
 ```
 
 Match each `entry.*` value to the question you filled and replace the placeholders in `GOOGLE_FORM_FIELDS` inside `src/pages/Alumni.vue`.
+
+For Gender specifically, set `GOOGLE_FORM_OPTIONAL_FIELDS.gender` in `src/pages/Alumni.vue` after you add Gender to the Google Form.
 
 ## 4. Test
 

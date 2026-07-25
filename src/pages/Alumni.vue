@@ -150,6 +150,25 @@
               />
             </div>
 
+            <!-- Gender -->
+            <div>
+              <label for="gender" class="block text-sm font-semibold text-navy mb-1">
+                Gender <span class="text-presec-red">*</span>
+              </label>
+              <select
+                id="gender"
+                :name="GOOGLE_FORM_OPTIONAL_FIELDS.gender || undefined"
+                v-model="form.gender"
+                required
+                class="w-full border border-navy/20 rounded-lg px-4 py-2.5 text-navy focus:outline-none focus:ring-2 focus:ring-navy/40 bg-white"
+              >
+                <option value="" disabled>Select gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+            </div>
+
             <!-- Year of Completion -->
             <div>
               <label for="yearCompletion" class="block text-sm font-semibold text-navy mb-1">
@@ -736,6 +755,9 @@ const GOOGLE_FORM_FIELDS = {
   support: 'entry.1261050673',
   message: 'entry.1342396445'
 }
+const GOOGLE_FORM_OPTIONAL_FIELDS = {
+  gender: 'entry.1702792532'
+}
 
 const IFRAME_NAME = 'alumni-registration-target'
 const SUBMISSION_TIMEOUT_MS = 15000
@@ -750,6 +772,7 @@ const submissionTimeoutId = ref(null)
 
 const form = ref({
   fullName: '',
+  gender: '',
   yearCompletion: '',
   programme: '',
   profession: '',
@@ -771,6 +794,7 @@ function clearSubmissionTimeout() {
 function resetForm() {
   form.value = {
     fullName: '',
+    gender: '',
     yearCompletion: '',
     programme: '',
     profession: '',
@@ -793,6 +817,11 @@ function validateForm() {
 
   if (!form.value.fullName.trim()) {
     formError.value = 'Please enter your full name.'
+    return false
+  }
+
+  if (!form.value.gender.trim()) {
+    formError.value = 'Please select your gender.'
     return false
   }
 
